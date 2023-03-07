@@ -15,7 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Pro4Marquee.cpp">
+    <ClInclude Include="Marquee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TestMarquee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
