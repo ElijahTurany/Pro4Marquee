@@ -1,10 +1,13 @@
 #pragma once
+using namespace std;
+
 /*
  * CHANGELOG:
  * 2023.03.02 Alexi Brooks - Created
 */
+
 #include <string>
-using namespace std;
+
 //Class for holding a single bulletin
 //Copied directly from in-class implementation
 template <typename T>
@@ -30,12 +33,14 @@ public:
 	void setData(T d) { data = d; }
 	void setNext(ListNode<T>* n) { next = n; }
 };
+
 //Class for holding a linked list of string bulletins
 class Marquee {
-	//FIELDS
+//FIELDS
 private:
-	ListNode<string>* upcoming{ nullptr }; //Only maintain the "upcoming" (pre - current) pointer
+	ListNode<string>* upcoming{nullptr}; //Only maintain the "upcoming" (pre-current) pointer
 	int size{ 0 };
+
 	//Helper function to help the copy constructor and copy assignment
 	void copyHelper(int size, ListNode<string>* otherc) {
 		if (size > 0) {
@@ -44,48 +49,55 @@ private:
 			size--;
 			while (size > 0) {
 				otherc = otherc->getNext();
-				current->setNext(new ListNode<string>{ otherc -> getData() });
+				current->setNext(new ListNode<string>{ otherc->getData() });
 				current = current->getNext();
 				size--;
 			}
 			current->setNext(upcoming);
 		}
 	}
+
 public:
 	//Constructor
 	Marquee() {
 		//TODO
 	}
+
 	//Copy Constructor
 	Marquee(const Marquee& other) {
 		//TODO
 	}
+
 	//Destructor
 	~Marquee() {
 		//TODO
 	}
+
 	//Copy Assignment Operator
 	Marquee& operator=(const Marquee& other) {
 		//TODO
 	}
+
 	//Return the next string and advance
 	string rotate() {
 		string toReturn = upcoming->getData();
 		upcoming = upcoming->getNext();
 		return toReturn;
 	}
+
 	//add as next to play
 	void playNext(string s) {
-		//ListNode<string>* newNode{s};
+		ListNode<string>* newNode = new ListNode{s};
+		cout << newNode->getData();
+		size++;
 	}
+
 	//remove the next and return it
 	string decomission() {
-		string toReturn = upcoming->getData();
-		upcoming->setNext(upcoming->getNext()->getNext());
-		delete upcoming->getNext();
-		return toReturn;
+		//TODO
 	}
-	int getSize() {
+
+	int getSize() { 
 		return size;
 	}
 };
