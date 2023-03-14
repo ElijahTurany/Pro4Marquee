@@ -59,9 +59,7 @@ private:
 
 public:
 	//Constructor
-	Marquee() {
-		//TODO
-	}
+	Marquee() {}
 
 	//Copy Constructor
 	Marquee(const Marquee& other) {
@@ -70,7 +68,14 @@ public:
 
 	//Destructor
 	~Marquee() {
-		//TODO
+		ListNode<string>* prev = upcoming->getNext();
+		ListNode<string>* n = upcoming->getNext();
+		while (n != upcoming) {
+			n = prev->getNext();
+			delete prev;
+			prev = n;
+		}
+		delete upcoming;
 	}
 
 	//Copy Assignment Operator
@@ -85,16 +90,42 @@ public:
 		return toReturn;
 	}
 
-	//add as next to play
+	//add as next to plays
 	void playNext(string s) {
 		ListNode<string>* newNode = new ListNode{s};
-		cout << newNode->getData();
+		if (size == 0) {
+			upcoming = newNode;
+			upcoming->setNext(upcoming);
+		}
+		else {
+			ListNode<string>* current = upcoming;
+			for (int i = 0; i < size - 1; i++) {
+				current = current->getNext();
+			}
+			current->setNext(newNode);
+			newNode->setNext(upcoming);
+			upcoming = newNode;
+		}
 		size++;
 	}
 
 	//remove the next and return it
 	string decomission() {
-		//TODO
+		string toReturn = upcoming->getData();
+		ListNode<string>* toDelete = upcoming;
+		if (size == 0) {
+			delete toDelete;
+			return toReturn;
+		}
+		ListNode<string>* current = upcoming;
+		for (int i = 0; i < size - 1; i++) {
+			current = current->getNext();
+		}
+		upcoming = upcoming->getNext();
+		current->setNext(upcoming);
+	 	delete toDelete;
+		size--;
+		return toReturn;
 	}
 
 	int getSize() { 
