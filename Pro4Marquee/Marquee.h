@@ -63,7 +63,7 @@ public:
 
 	//Copy Constructor
 	Marquee(const Marquee& other) {
-		//TODO
+		copyHelper(other.size, other.upcoming);
 	}
 
 	//Destructor
@@ -80,7 +80,8 @@ public:
 
 	//Copy Assignment Operator
 	Marquee& operator=(const Marquee& other) {
-		//TODO
+		copyHelper(other.size, other.upcoming);
+		return *this;
 	}
 
 	//Return the next string and advance

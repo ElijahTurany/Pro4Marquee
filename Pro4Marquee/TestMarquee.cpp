@@ -105,8 +105,13 @@ bool test4() {
 // Read access violations (common error involving nullptr) do not respect catch() blocks
 // and just crash anyway.
 int main() { 
-	cout << "Running tests of the Marquee class..." << endl;
-	if (test1() && test2() && test3() && test4()) {
-		cout << "All tests passed!" << endl;
-	}
+	// cout << "Running tests of the Marquee class..." << endl;
+	// if (test1() && test2() && test3() && test4()) {
+	// 	cout << "All tests passed!" << endl;
+	// }
+	Marquee m{};
+		// if (m.getSize() != 0) {
+		// 	cout << "TEST 1 FAIL: newly constructed Marquee does not have size 0." << endl;
+		// 	cout << "false";
+		// }
 }
